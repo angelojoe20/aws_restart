@@ -5,7 +5,6 @@ s3 = boto3.client('s3')
 sns = boto3.client('sns')
 
 def lambda_handler(event, context):
-    # Check if the event contains 'Records'
     if 'Records' not in event:
         return {
             'statusCode': 400,
@@ -13,7 +12,7 @@ def lambda_handler(event, context):
         }
 
     try:
-        # Extract bucket name and file key from the event
+        
         bucket = event['Records'][0]['s3']['bucket']['name']
         key = event['Records'][0]['s3']['object']['key']
         
